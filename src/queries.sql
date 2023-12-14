@@ -171,13 +171,13 @@ create table address_details(
 
 -- inserting some values into the tables
 insert into person_details(first_name, last_name, phone, email) values
-	("Chinmay", "Bhalodia", "91 9313402393", "chinmaybhalodia@gmail.com"),
-    ("Rahul", "Sharma", "91 5446123345", "rahul@gmail.com"),
-	("Hemant", "Kulkarni", "91 546513151", "hemant@gmail.com"),
-    ("Aditya", "Das", "91 78823345", "aditya@gmail.com"),
-    ("Kush", "Shah", "91 945612345", "kush@gmail.com");
+	("Srinidhi", "Pasunuri", "91 9313402393", "srinidhi@gmail.com"),
+    ("Rashi", "Sharma", "91 5446123345", "rashi@gmail.com"),
+	("Hema", "Kulkarni", "91 546513151", "hema@gmail.com"),
+    ("Aditi", "Das", "91 78823345", "aditi@gmail.com"),
+    ("Kushi", "Shah", "91 945612345", "kushi@gmail.com");
 insert into address_details(address, city, state, zip) values
-	("xyz", "Rajkot", "Gujarat", "360005"),
+	("xyz", "Hyderabad", "Telangana", "360005"),
     ("abc", "Mumbai", "Maharashtra", "456002"),
 	("addr-101", "Rajkot", "Gujarat", "360001"),
     ("addr-405", "Pune", "Maharashtra", "456110"),
@@ -211,8 +211,8 @@ select * from person_details where person_id in
 order by first_name asc;
 
 -- output to above query
--- 1	Katshi	 Bhalodia	91 9845673245	katshi@gmail.com
--- 3	Srinidhi Pasunuri	91 9313402393	srinidhi@gmail.com
+
+-- 1	Srinidhi Pasunuri	91 9313402393	srinidhi@gmail.com
 
 -- count contacts by type
 select type, count(type) from address_book_2 group by type;
