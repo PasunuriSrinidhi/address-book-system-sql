@@ -149,7 +149,7 @@ create table address_book_2(
     foreign key(address_id) references address_details(address_id)
 );
 
--- creaating table for person details
+-- creating table for person details
 create table person_details(
 	person_id int not null auto_increment,
     first_name varchar(50) not null,
@@ -197,7 +197,7 @@ select * from person_details where person_id in
 
 -- output to above query is
 
--- 1	Hema	Kulkarni	91 546513151	hema@gmail.com
+-- 3	Hema	Kulkarni	91 546513151	hema@gmail.com
 
 -- count contacts by city or state
 select state, count(person_id) from address_book_2 as ab inner join address_details as ad on ab.address_id=ad.address_id where state = "Gujarat";
