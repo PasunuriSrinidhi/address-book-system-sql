@@ -122,7 +122,7 @@ select * from address_book_1;
 -- Rashi	Sharma	  abc	   Mumbai	 Maharashtra	456002	91 5446123345	rashi@gmail.com	family	book1
 -- Hema	       Kulkarni	 addr-101  Rajkot	 Gujarat        360001	91 546513151	hema@gmail.com	friends	book1
 -- Aditi	Das	addr-405   Pune	         Maharashtra	456110	91 78823345	aditi@gmail.com	family	book1
--- Kushi	Shah	addr-201   Ahmedabad	Gujarat	        380001	91 945612345	kushi@gmail.com	friends	book1
+-- Kushi	Shah	addr-201   Ahmedabad	 Gujarat	        380001	91 945612345	kushi@gmail.com	friends	book1
 
 
 -- UC10
@@ -136,3 +136,51 @@ select type, count(type) from address_book_1 group by type;
 --UC11
 --Ability to add person to both Friend and Family
 INSERT INTO addressbook VALUES ('Katshi', 'Bakugo', 'addr-137', 'Hyderabad', 'Telangana', 360006, 91 9845673245, 'katshi@gmail.com', 'family,friend');
+
+--UC12-er -diagram
+
+-- UC13
+-- ability to execute all queries as in UC6,7,8,10
+
+-- retrieving people belonging to a city
+select * from person_details where person_id in 
+	(select person_id from address_book_2 as ab inner join address_details as ad on ab.address_id=ad.address_id where city = "Rajkot");
+
+-- output to above query is
+
+-- 1	Hema	Kulkarni	91 546513151	hema@gmail.com
+
+-- count contacts by city or state
+select state, count(person_id) from address_book_2 as ab inner join address_details as ad on ab.address_id=ad.address_id where state = "Gujarat";
+
+-- output to above query is
+-- Gujarat	2
+
+-- get contacts sorted by name for given city
+select * from person_details where person_id in 
+	(select person_id from address_book_2 as ab inner join address_details as ad on ab.address_id=ad.address_id where city = "Hyderabad")
+order by first_name asc;
+
+-- output to above query
+-- 1	Katshi	 Bhalodia	91 9845673245	katshi@gmail.com
+-- 3	Srinidhi Pasunuri	91 9313402393	srinidhi@gmail.com
+
+-- count contacts by type
+select type, count(type) from address_book_2 group by type;
+
+-- output to above query
+-- Family	3
+-- Friend	2
+
+-- UC18
+-- adding the date_added attribute to contacts
+alter table address_book_2 add column date_added date not null;
+update address_book_2 set date_added = "2023-12-11";
+select * from address_book_2;
+
+-- output to above query
+-- 1	1	book2	Family	2023-12-11
+-- 2	2	book2	Family	2023-12-11
+-- 3	3	book2	Friend	2023-12-11
+-- 4	4	book2	Friend	2023-12-11
+-- 5	5	book2	Family	2023-12-11
