@@ -36,9 +36,9 @@ insert into address_book_1 (first_name, last_name, address, city, state, zip, ph
 select * from address_book_1;
 
 -- output to the above query
--- Srinidhi	Pasunuri	xyz	Hyderabad	Telangana	360005	91 9313402393	srinidhi@gmail.com
--- Rashi	Sharma	abc	Mumbai	Maharashtra	456002	91 5446123345	rashi@gmail.com
--- Kushi	Shah	pqr	Ahmedabad	Gujarat	380001	91 945612345	kushi@gmail.com
+-- Srinidhi	Pasunuri xyz	Hyderabad   Telangana	360005	91 9313402393	srinidhi@gmail.com
+-- Rashi	Sharma	abc	Mumbai	    Maharashtra	456002	91 5446123345	rashi@gmail.com
+-- Kushi	Shah	pqr	Ahmedabad   Gujarat	380001	91 945612345	kushi@gmail.com
 
 -- UC4
 -- editing the contact using first name
@@ -46,9 +46,9 @@ update address_book_1 set address = "pqr-201" where first_name = "Kushi";
 select * from address_book_1;
 
 -- output to the above query
--- Srinidhi	Pasunuri	xyz	Hyderabad	Telangana	360005	91 9313402393	srinidhi@gmail.com
--- Rashi	Sharma	abc	Mumbai	Maharashtra	456002	91 5446123345	rashi@gmail.com
--- Kushi	Shah	pqr-201	Ahmedabad	Gujarat	380001	91 945612345	kushi@gmail.com
+-- Srinidhi	Pasunuri xyz	Hyderabad   Telangana	360005	91 9313402393	srinidhi@gmail.com
+-- Rashi	Sharma	 abc	Mumbai	    Maharashtra	456002	91 5446123345	rashi@gmail.com
+-- Kushi	Shah	pqr-201	 Ahmedabad  Gujarat	380001	91 945612345	kushi@gmail.com
 
 -- UC5
 -- deleting a contact using first_name
@@ -56,8 +56,8 @@ delete from address_book_1 where first_name = "Kushi";
 select * from address_book_1;
 
 -- output to the above query
--- Srinidhi	Pasunuri	xyz	Hyderabad	Telangana	360005	91 9313402393	srinidhi@gmail.com
--- Rashi	Sharma	abc	Mumbai	Maharashtra	456002	91 5446123345	rahul@gmail.com
+-- Srinidhi	Pasunuri xyz	Hyderabad  Telangana	360005	91 9313402393	srinidhi@gmail.com
+-- Rashi	Sharma	abc	Mumbai	   Maharashtra	456002	91 5446123345	rahul@gmail.com
 
 -- adding more data to table
 insert into address_book_1 (first_name, last_name, address, city, state, zip, phone, email) values
@@ -77,18 +77,18 @@ select * from address_book_1 where city = "Hyderabad";
 select * from address_book_1 where state = "Maharashtra";
 
 -- output to the above query
--- Rashi	Sharma	abc	Mumbai	Maharashtra	456002	91 5446123345	rahul@gmail.com
--- Aditi	Das	addr-405	Pune	Maharashtra	456110	91 78823345	aditya@gmail.com
+-- Rashi	Sharma	abc	  Mumbai    Maharashtra	456002	91 5446123345	rahul@gmail.com
+-- Aditi	Das	addr-405  Pune	    Maharashtra	456110	91 78823345	aditya@gmail.com
 
 -- UC7
 -- getting number of contacts by each city
 select city, count(city) from address_book_1 group by city;
 
 -- output to above query
--- Hyderabad 1
+-- Hyderabad    1
 -- Rajkot	1
 -- Mumbai	1
--- Pune	1
+-- Pune   	1
 -- Ahmedabad	1
 
 -- getting number of contacts by every state
@@ -97,7 +97,7 @@ select state, count(state) from address_book_1 group by state;
 -- output to above query
 -- Gujarat	3
 -- Maharashtra	2
---Hyderabad  1
+--Hyderabad     1
 
 -- UC8
 -- retrieve entries sorted by name for particular city
@@ -118,11 +118,11 @@ update address_book_1 set type = "family" where first_name in ("Srinidhi", "Rash
 select * from address_book_1;
 
 -- output to above query
--- Srinidhi	Pasunuri	xyz	Hyderabad	Telangana	360005	91 9313402393	srinidhi@gmail.com
--- Rashi	Sharma	abc	Mumbai	Maharashtra	456002	91 5446123345	rashi@gmail.com	family	book1
--- Hema	Kulkarni	addr-101	Rajkot	Gujarat	360001	91 546513151	hema@gmail.com	friends	book1
--- Aditi	Das	addr-405	Pune	Maharashtra	456110	91 78823345	aditi@gmail.com	family	book1
--- Kushi	Shah	addr-201	Ahmedabad	Gujarat	380001	91 945612345	kushi@gmail.com	friends	book1
+-- Srinidhi	Pasunuri  xyz	   Hyderabad	 Telangana	360005	91 9313402393	srinidhi@gmail.com
+-- Rashi	Sharma	  abc	   Mumbai	 Maharashtra	456002	91 5446123345	rashi@gmail.com	family	book1
+-- Hema	       Kulkarni	 addr-101  Rajkot	 Gujarat        360001	91 546513151	hema@gmail.com	friends	book1
+-- Aditi	Das	addr-405   Pune	         Maharashtra	456110	91 78823345	aditi@gmail.com	family	book1
+-- Kushi	Shah	addr-201   Ahmedabad	Gujarat	        380001	91 945612345	kushi@gmail.com	friends	book1
 
 
 -- UC10
@@ -132,3 +132,7 @@ select type, count(type) from address_book_1 group by type;
 -- output to above query
 -- family	3
 -- friends	2
+
+--UC11
+--Ability to add person to both Friend and Family
+INSERT INTO addressbook VALUES ('Katshi', 'Bakugo', 'addr-137', 'Hyderabad', 'Telangana', 360006, 91 9845673245, 'katshi@gmail.com', 'family,friend');
