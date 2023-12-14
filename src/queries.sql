@@ -118,11 +118,11 @@ update address_book_1 set type = "family" where first_name in ("Srinidhi", "Rash
 select * from address_book_1;
 
 -- output to above query
--- Srinidhi	Pasunuri  xyz	   Hyderabad	 Telangana	360005	91 9313402393	srinidhi@gmail.com
--- Rashi	Sharma	  abc	   Mumbai	 Maharashtra	456002	91 5446123345	rashi@gmail.com	family	book1
--- Hema	       Kulkarni	 addr-101  Rajkot	 Gujarat        360001	91 546513151	hema@gmail.com	friends	book1
--- Aditi	Das	addr-405   Pune	         Maharashtra	456110	91 78823345	aditi@gmail.com	family	book1
--- Kushi	Shah	addr-201   Ahmedabad	 Gujarat	        380001	91 945612345	kushi@gmail.com	friends	book1
+-- Srinidhi	Pasunuri  xyz	   Hyderabad	 Telangana	360005	91 9313402393	srinidhi@gmail.com family       book1
+-- Rashi	Sharma	  abc	   Mumbai	 Maharashtra	456002	91 5446123345	rashi@gmail.com	  family	book1
+-- Hema	       Kulkarni	 addr-101  Rajkot	 Gujarat        360001	91 546513151	hema@gmail.com	  friends	book1
+-- Aditi	Das	addr-405   Pune	         Maharashtra	456110	91 78823345	aditi@gmail.com   family	book1
+-- Kushi	Shah	addr-201   Ahmedabad	 Gujarat	380001	91 945612345	kushi@gmail.com	  friends	book1
 
 
 -- UC10
