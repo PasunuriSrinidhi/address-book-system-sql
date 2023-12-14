@@ -138,7 +138,56 @@ select type, count(type) from address_book_1 group by type;
 INSERT INTO address_book_1 VALUES ('Katshi', 'Bakugo', 'addr-137', 'Hyderabad', 'Telangana', '360006', '91 9845673245', 'katshi@gmail.com', 'family,friend');
 
 --UC12-er -diagram
+-----------------------
+create table address_book_2(
+	person_id int not null,
+    address_id int not null,
+    name varchar(50),
+    type varchar(20),
+    primary key(person_id),
+    foreign key(person_id) references person_details(person_id),
+    foreign key(address_id) references address_details(address_id)
+);
 
+-- creaating table for person details
+create table person_details(
+	person_id int not null auto_increment,
+    first_name varchar(50) not null,
+    last_name varchar(50),
+    phone varchar(20),
+    email varchar(320) not null,
+    primary key(person_id, first_name, email)
+);
+
+-- creating table for address details
+create table address_details(
+	address_id int not null auto_increment,
+    address varchar(100) not null,
+    city varchar(20) not null,
+    state varchar(20),
+    zip varchar(10),
+    primary key(address_id)
+);
+
+-- inserting some values into the tables
+insert into person_details(first_name, last_name, phone, email) values
+	("Chinmay", "Bhalodia", "91 9313402393", "chinmaybhalodia@gmail.com"),
+    ("Rahul", "Sharma", "91 5446123345", "rahul@gmail.com"),
+	("Hemant", "Kulkarni", "91 546513151", "hemant@gmail.com"),
+    ("Aditya", "Das", "91 78823345", "aditya@gmail.com"),
+    ("Kush", "Shah", "91 945612345", "kush@gmail.com");
+insert into address_details(address, city, state, zip) values
+	("xyz", "Rajkot", "Gujarat", "360005"),
+    ("abc", "Mumbai", "Maharashtra", "456002"),
+	("addr-101", "Rajkot", "Gujarat", "360001"),
+    ("addr-405", "Pune", "Maharashtra", "456110"),
+    ("addr-201", "Ahmedabad", "Gujarat", "380001");
+insert into address_book_2(person_id, address_id, name, type) values
+	(1,1,"book2","Family"),
+    (2,2,"book2","Family"),
+    (3,3,"book2","Friend"),
+    (4,4,"book2","Friend"),
+    (5,5,"book2","Family");
 -- UC13
 -- ability to execute all queries as in UC6,7,8,10
 
@@ -172,15 +221,4 @@ select type, count(type) from address_book_2 group by type;
 -- Family	3
 -- Friend	2
 
--- UC18
--- adding the date_added attribute to contacts
-alter table address_book_2 add column date_added date not null;
-update address_book_2 set date_added = "2023-12-11";
-select * from address_book_2;
 
--- output to above query
--- 1	1	book2	Family	2023-12-11
--- 2	2	book2	Family	2023-12-11
--- 3	3	book2	Friend	2023-12-11
--- 4	4	book2	Friend	2023-12-11
--- 5	5	book2	Family	2023-12-11
