@@ -135,7 +135,7 @@ select type, count(type) from address_book_1 group by type;
 
 --UC11
 --Ability to add person to both Friend and Family
-INSERT INTO addressbook VALUES ('Katshi', 'Bakugo', 'addr-137', 'Hyderabad', 'Telangana', 360006, 91 9845673245, 'katshi@gmail.com', 'family,friend');
+INSERT INTO address_book_1 VALUES ('Katshi', 'Bakugo', 'addr-137', 'Hyderabad', 'Telangana', '360006', '91 9845673245', 'katshi@gmail.com', 'family,friend');
 
 --UC12-er -diagram
 
